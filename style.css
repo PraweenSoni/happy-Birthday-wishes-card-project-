@@ -1,9 +1,19 @@
 body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height:100vh;
-  background-color: #073b4c;
+ height: 100vh;
+ background-color: #073b4c;
+}
+
+.body {
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ margin-top: 100px;
+}
+
+h2 {
+ animation: 1s blink linear infinite;
+ display: flex;
+ justify-content: center;
 }
 
 .birthdayCard {
@@ -151,4 +161,30 @@ p {
 
 .birthdayCard:hover .happy {
   visibility:hidden; 
+}
+
+@keyframes blink {
+ 0% {
+  color: white;
+ }
+
+ 20% {
+  color: yellow;
+ }
+
+ 40% {
+  color: greenyellow;
+ }
+
+ 60% {
+  color: red;
+ }
+
+ 80% {
+  color: hotpink;
+ }
+
+ 100% {
+  color: blue;
+ }
 }
