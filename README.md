@@ -1,10 +1,11 @@
 # happy-Birthday-wishes-card-project-
 >  
-## Show some :heart: and star the repo to support the project.
+## Show some 🌟 star the repo to support the project.
 
 # Screenshots about app --
 <p>
-  <img src="" heigth="600" width="600" margin-left="20px">
+  <img src="https://github.com/PraweenSoni/happy-Birthday-wishes-card-project-/assets/106673980/24a2b599-e69d-49a9-90b4-42181c27f5cb" heigth="600" width="600" margin-left="20px">
+  <img src="https://github.com/PraweenSoni/happy-Birthday-wishes-card-project-/assets/106673980/9d51c387-ce60-4400-9424-bdb1b5ebe283" heigth="600" width="600" margin-left="20px">
 </p>
 
 
