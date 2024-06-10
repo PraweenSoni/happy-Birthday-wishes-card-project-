@@ -1,5 +1,5 @@
 body {
- background-color: #073b4c;
+ background-color: #000;
 }
 
 .body {
@@ -27,7 +27,7 @@ h2 {
 
 .cardFront {
  position: relative;
- background-color: #fff;
+ background-color: #F7879A;
  width: 250px;
  height: 350px;
  overflow: hidden;
@@ -126,7 +126,7 @@ h2 {
 
 .cardInside {
  position: absolute;
- background-color: #fff;
+ background-color: #F7879A;
  width: 250px;
  height: 350px;
  z-index: -1;
@@ -138,7 +138,7 @@ h2 {
 p {
  font-family: cursive;
  margin: 15px 10px 10px 30px;
- color: #333;
+ color: #000;
 }
 
 .name {
