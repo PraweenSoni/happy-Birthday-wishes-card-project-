@@ -4,7 +4,7 @@
 
 # Gif --
 <p>
-  <img src="https://github.com/praweensoni/happy-Birthday-wishes-card-project-/assets/106673980/8b727f61-d705-487d-a275-de9e03851317" heigth="600" width="600" margin-left="20px">
+  <img src="https://github.com/pinkerusham/happy-Birthday-wishes-card-project-/assets/106673980/8b727f61-d705-487d-a275-de9e03851317" heigth="600" width="600" margin-left="20px">
 </p>
 
 # Note
