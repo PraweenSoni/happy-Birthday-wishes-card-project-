@@ -137,8 +137,21 @@ h2 {
 
 p {
  font-family: cursive;
- margin: 15px 10px 10px 30px;
+ margin: 12px 8px 8px 18px;
  color: #000;
+}
+
+#desc{
+    /* border: 2px solid #ef476f; */
+    font-size: medium;
+    height: 150px;
+    overflow-y: scroll;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none; 
+}
+
+#desc::-webkit-scrollbar {
+    display: none;
 }
 
 .name {
@@ -153,7 +166,7 @@ p {
  font-family: Tahoma, sans-serif;
  color: #333;
  text-align: center;
- margin: 30px;
+ margin: 20px;
  outline-color: #333;
  outline-style: dashed;
 }
