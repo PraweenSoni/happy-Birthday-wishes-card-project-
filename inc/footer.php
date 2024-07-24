@@ -14,12 +14,6 @@
                 <li>
                     <a href="#">Join Now</a>
                 </li>
-                <!-- <li>
-                    <a href="#">Learn More</a>
-                </li>
-                <li>
-                    <a href="#">Manage Account</a>
-                </li> -->
             </ul>
         </li>
         <li class="nav__item">
@@ -28,21 +22,6 @@
                 <li>
                     <a href="#">Press Releases</a>
                 </li>
-                <li>
-                    <a href="#">About Our Products</a>
-                </li>
-                <li>
-                    <a href="#">Product Support</a>
-                </li>
-                <li>
-                    <a href="#">Product Manuals</a>
-                </li>
-                <li>
-                    <a href="#">Product Registration</a>
-                </li>
-                <li>
-                    <a href="#">Newsletter Sign Up</a>
-                </li>
             </ul>
         </li>
         <li class="nav__item">
@@ -50,12 +29,6 @@
             <ul class="nav__ul">
                 <li>
                     <a href="#">FAQ</a>
-                </li>
-                <li>
-                    <a href="#">Help Desk</a>
-                </li>
-                <li>
-                    <a href="#">Forums</a>
                 </li>
             </ul>
         </li>
