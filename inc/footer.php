@@ -1,10 +1,10 @@
 <footer class="footer">
     <div class="footer__addr">
-        <h1 class="footer__logo">Logo</h1>
+        <h1 class="footer__logo">Cards</h1>
         <h2>Contact</h2>
         <address>
             xyz, 123 Jharkhand, India<br>
-            <a class="footer__btn" href="mailto:ask.psoni@gmail.com">Email Us</a>
+            <a class="footer__btn" style="outline: auto;" href="mailto:ask.psoni@gmail.com">Email Us</a>
         </address>
     </div>
     <ul class="footer__nav">
@@ -12,7 +12,7 @@
             <h2 class="nav__title">Follow Us</h2>
             <ul class="nav__ul">
                 <li>
-                    <a href="#">Join Now</a>
+                    <a href="https://www.instagram.com/praween_123_pks/">Instagram</a>
                 </li>
             </ul>
         </li>
@@ -21,6 +21,9 @@
             <ul class="nav__ul">
                 <li>
                     <a href="#">Press Releases</a>
+                </li>
+                <li>
+                    <a href="#">About Our Products</a>
                 </li>
             </ul>
         </li>

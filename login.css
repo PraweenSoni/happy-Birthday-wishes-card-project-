@@ -5,7 +5,7 @@
 }
 
 body {
-  background-color: steelblue;
+  background-color: #797a49;
   color: #fff;
   font-family: 'Muli', sans-serif;
   display: flex;
@@ -18,7 +18,7 @@ body {
 }
 
 .container {
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: #7f4348;
   padding: 20px 40px;
   border-radius: 5px;
 }

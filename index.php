@@ -14,31 +14,20 @@
     <?php require('inc/header.php') ?>
     <div class="hero">
         <div class="container">
-            <h1>Welcome To My Website</h1>
-            <p>Create your wish card for free.</p>
+            <h1>Welcome! Create your card</h1>
+            <p>Signup to create your greeting card for free.</p>
         </div>
     </div>
 
     <section class="container content">
-        <h2>Content One</h2>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ratione dolorem voluptates eveniet tempora ut cupiditate magnam, sapiente, hic quo in ipsum iste soluta eaque perferendis nihil recusandae dolore officia aperiam corporis similique. Facilis quos tempore labore totam! Consectetur molestiae iusto ducimus error reiciendis aspernatur dolor, modi dolorem sit architecto, voluptate magni sunt unde est quas? Voluptates a dolorum voluptatum quo perferendis aut sit. Aspernatur libero laboriosam ab eligendi omnis delectus earum labore, placeat officiis sint illum rem voluptas ipsum repellendus iste eius recusandae quae excepturi facere, iure rerum sequi? Illum velit delectus dicta et iste dolorum obcaecati minus odio eligendi!</p>
-
-        <h3>Content Two</h3>
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Pariatur provident nostrum possimus inventore nisi laboriosam consequatur modi nulla eos, commodi, omnis distinctio! Maxime distinctio impedit provident, voluptates illo odio nostrum minima beatae similique a sint sapiente voluptatum atque optio illum est! Tenetur tempora doloremque quae iste aperiam hic cumque repellat?</p>
+        <h2>About</h2>
+        <p>Our Wishing Card Website is an interactive platform allowing users to create and send personalized digital greeting cards for various occasions, and easy sharing features, making the card creation process is very simple.
+        customization options for messages and photos(Avaliable soon). You can share cards via email, social media, or direct links. our platform aims to make sending heartfelt messages to your loved ones quick, fun, and meaningful to loved ones.</p>
+        <h3>Note :</h3>
+        <p>This Website is hosted in free hosting. So, if you face any issue to creating a new account please contact through email. If your problem is within my control then i will help you as soon as possible.(also you can suggest me new design/idea to improvements for our platform.) </p>
     </section>
     <?php require('inc/footer.php') ?>
-    <script>
-        const nav = document.querySelector('.nav')
-        window.addEventListener('scroll', fixNav)
-
-        function fixNav() {
-            if (window.scrollY > nav.offsetHeight + 150) {
-                nav.classList.add('active')
-            } else {
-                nav.classList.remove('active')
-            }
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 
 </html>

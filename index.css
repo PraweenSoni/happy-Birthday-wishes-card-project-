@@ -20,6 +20,7 @@ body {
 .nav {
   position: fixed;
   background-color: #222;
+  z-index: 10;
   top: 0;
   left: 0;
   right: 0;
@@ -68,7 +69,7 @@ body {
 }
 
 .hero {
-  background-image: url('https://images.pexels.com/photos/450035/pexels-photo-450035.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
+  background-image: url('bgimg/bgimg.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: bottom center;
