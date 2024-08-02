@@ -6,9 +6,52 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
-// Your dashboard content here
+$servername = "localhost"; 
+$username = "root"; 
+$password = ""; 
+$dbname = "carddata"; 
+date_default_timezone_set('Asia/Kolkata');
 
-$username = $_SESSION['username'];
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+$conn->query("SET time_zone = '+05:30';");
+
+// Check if user is logged in
+if (isset($_SESSION['user_id'])) {
+    $user_id = $_SESSION['user_id'];
+
+    // SQL query to count the number of forms submitted by the user
+    $sql = "SELECT created_at, random_string FROM form_data WHERE user_id = ? ORDER BY created_at ASC";
+    $stmt = $conn->prepare($sql);
+    $form_count = 0;
+    if ($stmt) {
+        $stmt->bind_param("i", $user_id);
+        $stmt->execute();
+        $stmt->bind_result($created_at, $random_string);
+
+        $tableRows = "";
+        while ($stmt->fetch()) {
+            $form_count++;
+            $tableRows .= '<tr>';
+            $tableRows .= '<td>' . htmlspecialchars($form_count) . '</td>';
+            $tableRows .= '<td>' . htmlspecialchars($created_at) . '</td>';
+            $tableRows .= '<td><a href="card.php?code=' . urlencode($random_string) . '" target="_blank">View Card</a></td>';
+            $tableRows .= '</tr>';
+        }
+        $stmt->close();
+    } else {
+        echo "Error preparing statement: " . $conn->error;
+    }
+} else {
+    echo "User is not logged in.";
+}
+
+// Close the database connection
+$conn->close();
 ?>
 
 
@@ -24,6 +67,25 @@ $username = $_SESSION['username'];
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="dashboard.css">
     <link rel="stylesheet" href="inc/footer.css">
+    <script>
+        $(document).ready(function() {
+            $('#myForm').on('submit', function(event) {
+                event.preventDefault();
+                $.ajax({
+                    url: 'submit.php',
+                    type: 'POST',
+                    data: $(this).serialize(),
+                    success: function(data) {
+                        // Append the new row to the table
+                        $('#responseMessage tbody').append(data);
+                    },
+                    error: function() {
+                        alert('Error submitting form');
+                    }
+                });
+            });
+        });
+    </script>
 </head>
 
 <body>
@@ -34,7 +96,7 @@ $username = $_SESSION['username'];
             <div class="header-grid">
                 <div>
                     <h1>Dashboard</h1>
-                    <p class="header-total">Welcome, <?php echo htmlspecialchars($username); ?></p>
+                    <p class="header-total">Welcome, <?php echo $_SESSION['username']; ?></p>
                 </div>
             </div>
         </div>
@@ -54,46 +116,21 @@ $username = $_SESSION['username'];
                         Coming Soon
                     </p>
                 </article>
-                <article class="card twitter">
+                <article class="card instagram">
                     <p class="card-title">
                         Card Created
                     </p>
                     <p class="card-followers">
-                        <span class="card-followers-number" id="totalLink"></span>
+                        <span class="card-followers-number"><?php echo $form_count ?></span>
                         <span class="card-followers-title">Total Cards</span>
                     </p>
                     <p class="card-today">
-                        using localstorage
+                        <!-- comming soon -->
                     </p>
                 </article>
-                <!-- <article class="card instagram">
-            <p class="card-title">
-              <img src="./images/instagram.png" alt="" />
-              @jpmontoya182
-            </p>
-            <p class="card-followers">
-              <span class="card-followers-number">12K</span>
-              <span class="card-followers-title">Followers</span>
-            </p>
-            <p class="card-today">
-              <img src="./images/icon-up.png" alt="" width="9px" />
-              12 Today
-            </p>
-          </article>
-          <article class="card youtube">
-            <p class="card-title">
-              <img src="./images/youtube.png" alt="" />
-              
-            </p>
-            <p class="card-followers">
-              <span class="card-followers-number">5m</span>
-              <span class="card-followers-title">Followers</span>
-            </p>
-            <p class="card-today is-danger">
-              <img src="./images/icon-down.png" alt="" width="9px" />
-              12 Today
-            </p>
-          </article> -->
+                <!-- 
+                    <article class="card youtube">
+                    </article> -->
             </div>
         </div>
     </section>
@@ -107,9 +144,27 @@ $username = $_SESSION['username'];
                             <span>CREATED</span>
                             <span>CARDS</span>
                         </div>
-                        <div class="createdCardList" id="responseMessage">
+                        <div class="createdCardList" id="responseMessage" name="form_all_sub">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>S no.</th>
+                                        <th>Created Date/Time</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php echo isset($tableRows) ? $tableRows : ''; ?>
+                                </tbody>
+                            </table>
                         </div>
-                        <div class="app-contact">If you generate any card. Please save link.</div>
+                        <div class="app-contact" style="color: red;">Note: We have made changes to our code/database to enhance functionality further. Therefore, your previous link will not be visible anymore, but you can generate a new card. If you have saved your link, it will work properly.</div>
+                        <hr>
+                        <details style="font-size: 12px; color: red;">
+                            <summary>Notice in Hinglish</summary>
+                             Humne apne code/database mein changes kiye hain taaki aur bhi zyada functionality mil sake. Isliye, aapka pichhla link ab dikhai nahi dega, lekin aap ek naya card generate kar sakte hain. Agar aapne apna purana link save kiya hai, toh wo sahi tarike se kaam karega.
+                        </details>
+                        <div class="app-contact">Note : Card Validity only 7 days</div>
                     </div>
                     <div class="screen-body-item">
                         <div class="app-title">
@@ -117,10 +172,10 @@ $username = $_SESSION['username'];
                             <span>CARD</span>
                         </div>
                         <form id="myForm">
-                        <!-- <form action="submit.php" method="POST"> -->
+                            <!-- <form action="submit.php" method="POST"> -->
                             <div class="app-form">
                                 <div class="app-form-group">
-                                    <input class="app-form-control" required placeholder="NAME" value="HAPPY BIRTHDAY 🎂">
+                                    <input class="app-form-control" required name="field0" placeholder="CARD NAME" value="HAPPY BIRTHDAY 🎂">
                                 </div>
                                 <div class="app-form-group">
                                     <input class="app-form-control" required name="field1" placeholder="NAME">
@@ -129,7 +184,7 @@ $username = $_SESSION['username'];
                                     <input class="app-form-control" required name="field3" placeholder="YOUR NAME">
                                 </div>
                                 <div class="app-form-group message">
-                                    <input class="app-form-control" required name="field2" placeholder="MESSAGE">
+                                    <input class="app-form-control" required name="field2" placeholder="MESSAGE (MAX LENGTH 255-CHARACTERS)">
                                     <!-- <textarea name="" id="" cols="50" rows="10" placeholder="MESSAGE"></textarea> -->
                                 </div>
                                 <div class="app-form-group buttons">
@@ -143,41 +198,22 @@ $username = $_SESSION['username'];
         </div>
     </section>
     <?php require('inc/footer.php') ?>
-    <script>
+    <!-- <script>
         $(document).ready(function() {
-            // Load stored response messages if available
-            if (localStorage.getItem('responseMessages')) {
-                const responseMessages = JSON.parse(localStorage.getItem('responseMessages'));
-                let totalLink = 0;
-                responseMessages.forEach(message => {
-                    $('#responseMessage').append('<div>' + message + '</div>');
-                    totalLink++;
-                });
-                document.getElementById('totalLink').innerText = totalLink;
-            }
-
             $('#myForm').on('submit', function(event) {
                 event.preventDefault();
-
                 $.ajax({
                     url: 'submit.php',
                     type: 'POST',
                     data: $(this).serialize(),
                     success: function(response) {
-                        $('#responseMessage').append(response);
-                        $('#myForm')[0].reset(); // Reset the form
-
-                        let responseMessages = [];
-                        if (localStorage.getItem('responseMessages')) {
-                            responseMessages = JSON.parse(localStorage.getItem('responseMessages'));
-                        }
-                        responseMessages.push(response);
-                        localStorage.setItem('responseMessages', JSON.stringify(responseMessages));
+                        $('#responseMessage tbody').append(response);
+                        $('#myForm')[0].reset(); 
                     }
                 });
             });
         });
-    </script>
+    </script> -->
     <script src="script.js"></script>
 </body>
 

@@ -1,4 +1,8 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -30,7 +34,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $update_sql = "UPDATE users SET reset_token='$token', reset_token_expiry='$token_expiry' WHERE id='$user_id'";
         if ($conn->query($update_sql) === TRUE) {
             // Send reset email (replace with your email sending logic)
-            $reset_link = "http://your_domain/reset_password.php?token=$token";
+            // "http://localhost/card/reset_password.php?token=$token";
+            $reset_link = "http://localhost/card/reset_password.php?token=$token";
             $email_subject = "Password Reset Request";
             $email_message = "Hello $username,\n\nYou requested a password reset. Please click the link below to reset your password:\n$reset_link\n\nThis link is valid for 1 hour.\n\nIf you did not request this, please ignore this email.\n\nRegards,\nYour App Team";
             // Example using PHP mail function

@@ -23,7 +23,7 @@ $code = isset($_GET['code']) ? $conn->real_escape_string($_GET['code']) : '';
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Happy birthday 🎂</title>
+  <title>Greeting Card</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 
@@ -32,7 +32,17 @@ $code = isset($_GET['code']) ? $conn->real_escape_string($_GET['code']) : '';
   <div class="body">
     <div class="birthdayCard">
       <div class="cardFront">
-        <h3 class="happy">HAPPY BIRTHDAY 🎂</h3>
+      <?php
+
+        if (!empty($code)) {
+        $sql = "SELECT * FROM form_data WHERE random_string='$code'";
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+        echo "<h3 id='title' class='happy'>" . htmlspecialchars($row["field0"]) . "</h3>";
+        ?>
+        <!-- <h3 class="happy">HAPPY BIRTH 🎂</h3> -->
         <div class="balloons">
           <div class="balloonOne"></div>
           <div class="balloonTwo"></div>
@@ -41,21 +51,10 @@ $code = isset($_GET['code']) ? $conn->real_escape_string($_GET['code']) : '';
         </div>
       </div>
       <div class="cardInside">
-        <h3 class="back">HAPPY BIRTHDAY 🎂</h3>
-        <!-- <p id="title"></p>
-        <p id="desc"></p>
-        <p class="name" id="name"></p> -->
+        <!-- <h3 class="back">HAPPY BIRTHDAY 🎂</h3> -->
         <?php
-
-        if (!empty($code)) {
-          $sql = "SELECT * FROM form_data WHERE random_string='$code'";
-          $result = $conn->query($sql);
-
-          if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
+              echo "<h3 id='title' class='back'>" . htmlspecialchars($row["field0"]) . "</h3>";
               // echo "<h2>ID: " . htmlspecialchars($row["id"]) . "</h2>";
-              // echo "<p><strong>Field1:</strong> " . htmlspecialchars($row["field1"]) . "</p>";
-              // echo "<p><strong>Field2:</strong> " . htmlspecialchars($row["field2"]) . "</p>";
               // echo "<p><strong>Field3:</strong> " . htmlspecialchars($row["field3"]) . "</p>";
               echo "<p id='title'>" . htmlspecialchars($row["field1"]) . "</p>";
               echo "<p id='desc'>" . htmlspecialchars($row["field2"]) . "</p>";
@@ -74,7 +73,7 @@ $code = isset($_GET['code']) ? $conn->real_escape_string($_GET['code']) : '';
       </div>
     </div>
   </div>
-  <footer>Design & Develop by <a href="https://praweensoni.netlify.app/">Pk's</a>
+  <footer>Create Your Card <a href="http://wishcard.free.nf"> Click here...</a>
     <!-- <script src="script.js"></script> -->
 </body>
 
