@@ -9,8 +9,9 @@
 ## Show some 🌟 star the repo to support the project.
 
 # Gif --
-<p><a href="http://wishcard.free.nf">
-  <img src="https://github.com/PraweenSoni/happy-Birthday-wishes-card-project-/assets/106673980/8b727f61-d705-487d-a275-de9e03851317" heigth="600" width="600" margin-left="20px">
+<p><a href="https://wishcard.free.nf">
+<!--   ![EHB01](https://github.com/user-attachments/assets/d92286d8-b65d-4372-a308-c3a65cc8e2ce) -->
+  <img src="https://github.com/user-attachments/assets/d92286d8-b65d-4372-a308-c3a65cc8e2ce" heigth="600" width="600" margin-left="20px">
   </a>
 </p>
 
